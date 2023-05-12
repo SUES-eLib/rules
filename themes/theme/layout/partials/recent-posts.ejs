@@ -1,0 +1,12 @@
+<div id="recent-posts">
+  <h1>近期发布</h1>
+  <% if (page.posts.length > 0) { %>
+    <% page.posts.sort('date', -1).limit(10).each(post => { %>
+      <p>
+        <a href="<%=url_for(post.path)%>"><%=(post.title?post.title:'无标题')%></a>
+      </p>
+    <% }); %>
+  <% } else {%>
+    <p>没有更多内容。</p>
+  <% } %>
+</div>

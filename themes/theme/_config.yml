@@ -1,0 +1,24 @@
+
+# html lang
+language: zh-CN
+
+# main menu navigation
+menu:
+  Home: /
+  Archives: /archives
+
+# stylesheets loaded in the <head>
+stylesheets:
+- /css/theme.css
+
+# scripts loaded in the end of the body
+scripts:
+- /js/theme.js
+- /js/search.js
+
+date_format: YYYY-MM-DD
+
+paginator_options:
+  space: '···'
+  prev_text: '<'
+  next_text: '>'

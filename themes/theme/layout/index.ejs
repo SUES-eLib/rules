@@ -1,0 +1,23 @@
+<div id="search">
+  <noscript>
+    <style>div > .search-input-container{display: none;}</style>
+    <div class="search-input-container">
+      <input type="text" class="search-input" placeholder="启用 JavaScript 以进行搜索" disabled>
+      <button class="search-button" disabled style="display: none;">搜索</button>
+    </div>
+  </noscript>
+  <div class="search-input-container">
+    <input type="text" class="search-input" placeholder="搜索内容">
+    <button class="search-button" disabled style="display: none;">搜索</button>
+  </div>
+  <div class="search-result-container no-result">
+    <div id="search-stats"></div>
+    <hr>
+    <div id="search-result"><ul class="search-result-list"></ul></div>
+    <div><a id="more" style="display: none;" href="javascript:more()">加载更多</a><span id="loading" style="display: none;">请稍后……</span></div>
+  </div>
+</div>
+<p><a href="/archives/">归档</a></p>
+<hr />
+<%-partial('partials/recent-posts')%>
+<%-partial('partials/paginator')%>

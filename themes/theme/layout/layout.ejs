@@ -1,0 +1,68 @@
+
+<%
+var pageTitle = page.title || config.subtitle || '';
+if (is_archive()) pageTitle = '归档';
+if (is_tag()) pageTitle = '标签: ' + page.tag;
+if (is_category()) pageTitle = '合集: ' + page.category;
+if (is_month()) {pageTitle += ': ' + page.year+'年'+page.month+'月';}
+else if (is_year()) pageTitle += ': '+page.year+'年';
+pageTitle += ' [ ' + config.title + ' ]';
+%>
+
+<!DOCTYPE html>
+<html lang="<%=config.language%>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title><%=pageTitle%></title>
+  <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
+    <!-- stylesheets list from _config.yml -->
+    <% theme.stylesheets.forEach(url => { %>
+      <link rel="stylesheet" href="<%=url%>">
+    <% }); %>
+  <% } %>
+  <% if (config.highlight.enable){ %>
+    <%- css('https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css') %>
+  <% } %>
+  <style id="style"></style>
+</head>
+<body>
+<div>
+  <div class="header">
+    <div class="background"></div>
+    <div class="wrap">
+      <span style="width: 54px;"><a href="javascript:history.go(-1)">◄返回</a></span>
+      <div id="title" style="overflow:hidden;white-space:nowrap;padding: 3px 0;width: 100%;">
+        <div id="info" class="info" align=center style="width:100%;overflow:hidden;white-space:nowrap;">
+          <span class="txt"><%=pageTitle%></span>
+        </div>
+      </div>
+      <span style="width: 54px; text-align: right;"></span>
+    </div>
+  </div>
+</div>
+<div id="content-outer">
+  <div id="content-inner">
+    <%- body %>
+  </div>
+</div>
+<% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
+  <% theme.scripts.forEach(url => { %>
+    <script src="<%=url%>"></script>
+  <% }); %>
+<% } %>
+<% if (is_home()) { %>
+  <script src="/js/local-search.js"></script>
+<% } %>
+<% if (is_post()) { %>
+  <script>
+    const localSearch = new LocalSearch({
+      path             : '/search.json',
+      top_n_per_article: 1,
+      unescape         : false
+    });
+    localSearch.highlightSearchWords(document.getElementById('post'))
+  </script>
+<% } %>
+</body>
+</html>

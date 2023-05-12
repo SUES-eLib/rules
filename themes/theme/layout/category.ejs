@@ -1,0 +1,12 @@
+<div id="category">
+  <h1><%=page.category%></h1>
+  <% page.posts.each(article => { %>
+    <div class="category-item">
+      <p>
+        <a href="<%=url_for(article.path)%>"><%=(article.title?article.title:'无标题')%></a>
+        <%=date(article.date,theme.date_format)%>
+      </p>
+    </div>
+  <% }); %>
+</div>
+<%-partial('partials/paginator')%>
