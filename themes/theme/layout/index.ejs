@@ -17,7 +17,7 @@
     <div><a id="more" style="display: none;" href="javascript:more()">加载更多</a><span id="loading" style="display: none;">请稍后……</span></div>
   </div>
 </div>
-<p><a href="/archives/">归档</a></p>
+<p><a href="<%- url_for('/archives/') %>">归档</a></p>
 <hr />
 <%-partial('partials/recent-posts')%>
 <%-partial('partials/paginator')%>
