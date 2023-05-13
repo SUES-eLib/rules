@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   const localSearch = new LocalSearch({
-    path: '/search.json',
+    path: '/rules/search.json',
     top_n_per_article: 2,
     unescape: false
   });

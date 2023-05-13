@@ -18,7 +18,7 @@ pageTitle += ' [ ' + config.title + ' ]';
   <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
     <!-- stylesheets list from _config.yml -->
     <% theme.stylesheets.forEach(url => { %>
-      <link rel="stylesheet" href="<%=url%>">
+      <link rel="stylesheet" href="<%- url_for(url) %>">
     <% }); %>
   <% } %>
   <% if (config.highlight.enable){ %>
@@ -48,16 +48,16 @@ pageTitle += ' [ ' + config.title + ' ]';
 </div>
 <% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
   <% theme.scripts.forEach(url => { %>
-    <script src="<%=url%>"></script>
+    <script src="<%- url_for(url) %>"></script>
   <% }); %>
 <% } %>
 <% if (is_home()) { %>
-  <script src="/js/local-search.js"></script>
+  <script src="<%- url_for('/js/local-search.js') %>"></script>
 <% } %>
 <% if (is_post()) { %>
   <script>
     const localSearch = new LocalSearch({
-      path             : '/search.json',
+      path             : <%- url_for('/search.json') %>,
       top_n_per_article: 1,
       unescape         : false
     });
