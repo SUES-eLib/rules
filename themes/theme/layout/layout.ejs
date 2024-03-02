@@ -57,7 +57,7 @@ pageTitle += ' [ ' + config.title + ' ]';
 <% if (is_post()) { %>
   <script>
     const localSearch = new LocalSearch({
-      path             : <%- url_for('/search.json') %>,
+      path             : "<%- url_for('/search.json') %>",
       top_n_per_article: 1,
       unescape         : false
     });
