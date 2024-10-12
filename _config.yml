@@ -127,13 +127,16 @@ clean_css:
   exclude: 
     - '*.min.css'
 
-html_minifier:  
-  collapseBooleanAttributes: true
-  collapseWhitespace: true
-  ignoreCustomComments: [ !!js/regexp /^\s*more/]
+htmlnano:  
+  exclude:
+  collapseBooleanAttributes:
+  collapseWhitespace: conservative
+  # Ignore '<!-- more -->' https://hexo.io/docs/tag-plugins#Post-Excerpt
+  ignoreCustomComments: 
+    - '^\\s*more'
   removeComments: true
   removeEmptyAttributes: true
-  removeScriptTypeAttributes: true
-  removeStyleLinkTypeAttributes: true
-  minifyJS: true
-  minifyCSS: true
+  minifyJs:
+  minifyCss:
+    preset: default
+  minifyJson:
