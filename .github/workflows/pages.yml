@@ -22,13 +22,13 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.OS }}-npm-cache
+          key: ${{ runner.OS }}-yarn-cache
           restore-keys: |
-            ${{ runner.OS }}-npm-cache
+            ${{ runner.OS }}-yarn-cache
       - name: Install Dependencies
-        run: npm install
+        run: yarn
       - name: Build
-        run: npm run build
+        run: yarn run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
